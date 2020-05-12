@@ -31,13 +31,10 @@ class ColorDetector(object):
             print(e)
             
         # We get image dimensions and crop the parts of the image we don't need
-        # Bear in mind that because the first value of the image matrix is start and second value is down limit.
-        # Select the limits so that it gets the line not too close and not too far, and the minimum portion possible
-        # To make process faster.
         height, width, channels = cv_image.shape
-        rows_to_watch = 100
-        top_trunc = 1*height / 2 #get 3/4 of the height from the top section of the image
-        bot_trunc = top_trunc + rows_to_watch #next set of rows to be used
+        #rows_to_watch = 100
+        top_trunc = height
+        bot_trunc = height/2
         crop_img = cv_image[top_trunc:bot_trunc, 0:width]
         
         # Convert from RGB to HSV
