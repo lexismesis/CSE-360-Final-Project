@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 from cv_bridge import CvBridge, CvBridgeError
 from sensor_msgs.msg import Image
-from movement import MoveRosBots
+from Final_Project_move import MoveRosBots
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Float32
 #from std_msgs import String
@@ -97,9 +97,16 @@ class ColorDetector(object):
         # holder variable for color
         light_color = ""
 
+        '''
+        DISCLAIMER: wanted to use msgs and update with value so that the movement
+        script could subscribe, but msgs would not work despite the changes to package.xml
+        and CMakeLists.txt. Error resulted in saying there was no msg where we put it.
+        '''
+        
+        
         # determine which of the 3 colors have been detected and assign Color msg accordingly
         # use the fact that the mask will be 255 if detected, and 0 otherwise.
-        # also assign the chosen mask for the camera
+        # also assign the chosen mask for the camera        
         if green_mask[1] > 0:
             light_color = "GREEN"
             chosen_mask = green_mask
